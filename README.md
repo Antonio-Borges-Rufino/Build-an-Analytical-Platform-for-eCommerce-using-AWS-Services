@@ -1,1 +1,1 @@
-# Implementando o Hive na VM da AWS EC2
+# Implementando o Hive no EC2 da AWS
