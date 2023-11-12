@@ -1,1 +1,1 @@
-# PySpark-Project-Build-a-Data-Pipeline-using-Hive-and-Cassandra
+# Implementando o Hive na VM da AWS EC2
