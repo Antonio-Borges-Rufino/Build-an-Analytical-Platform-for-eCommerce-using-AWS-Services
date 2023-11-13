@@ -21,6 +21,29 @@
   * user_id: Id do usuário (estático)
   * user_session: Id da sessão (Pode variar para o mesmo usuario, cada sessão é um id único)
 * Usaremos esses dados para simular como se fosse uma pessoa usando o site e então vamos fazer o pipeline acima descrito
+# Instalar comando por CLI da AWS
+* Vou seguir o projeto e vou usar o CLI da AWS
+* Em vez de instalar na minha máquina, vou usar o AWS CloudShell, que é mais prático
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/8be6aca4-0ffc-4cc4-aee7-7d2affa1a34b)
+
+# Criar o bucket S3
+* Crie o bucket usando CLI como seguinte comando (substitua {bucket-name} pelo nome do bucket):
+* ```
+  aws s3 mb s3://{bucket-name}
+  ```
+* Podemos ver se o bucket foi criado acessando o recurso S3 e indo em bucket. No meu caso, consegui criar um bucket com acesso privado, como mostra a imagem abaixo (apaguei parte das informações)
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/5e26e951-e06e-4cd8-a981-e578a43a49ae)
+* Agora vou adicionar uma tag para o bucket
+* ```
+  aws s3api put-bucket-tagging --bucket {bucket-name} --tagging 'TagSet=[{Key={key-tag},Value={value-tag}}]'
+  ```
+* Essa tag rastreia as modificações feitas pelo usuário que está consumindo o bucket
+* Agora podemos enviar nossos dados para o bucket. Se eu tivesse optado pela escolha de usar o CLI do windowns, poderia fazer isso diretamente do meu pc, mas com o CloudShell é necessário ou enviar o arquivo para o CloudShell (máximo 1gb) ou enviar direto para o bucket no painel (Máximo de 5gb, que é o nivel gratuito)
+* Portanto, vou enviar direto pelo painel mesmo, inclusive, vou diminuir a quantidade de dados que tenho atualmente para poder caber no nível de teste gratuito do bucket S3, como mostrado na imagem abaixo
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/7b9b8633-b6eb-4174-a86d-eb96870073ad)
+* 
+
+
   
   
   
