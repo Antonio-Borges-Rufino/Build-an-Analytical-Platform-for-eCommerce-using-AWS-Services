@@ -44,6 +44,13 @@
 * Agora é só enviar os dados (no meu caso, utilizei só as as primeiras 7 milhões de linha do arquivo) para o bucket
 
 # Configurando e Implementando o AWS Kinesis Data Stream
+* Vá no painel de serviços do AWS e pesquise por Kinesis, e então crie um serviço do tipo Kinesis Data Stream
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/b5181036-35e3-4716-b92e-bf69bd98a693)
+* Existe pouca opção de criação, então optei por uso mínimo
+* Após criar, o serviço fica disponivel como na imagem abaixo
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/ffbbef8b-64ac-4506-8dfe-fa56f2271f77)
+
+
 # Criando Aplicação Python Que Simula Um Site
 * Para criar essa aplicação, usaremos a SDK boto3 da AWS. Esse framework é preparado para rodar dentro do próprio serviço da amazon, podendo ser no CLI, no SHELL ou no Cloud9.
 * Para o nosso projeto, vamos usar o Cloud9. Para isso, vá até o serviço de aplicações da AWS e procure por Cloud9. Crie um novo serviço e use um sistema de computação EC2 que esteja habilitado para o nível grátis. Use a minima quantidade de recursos possiveis.
