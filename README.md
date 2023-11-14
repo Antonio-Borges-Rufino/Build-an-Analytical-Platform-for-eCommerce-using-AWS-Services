@@ -43,7 +43,11 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/7b9b8633-b6eb-4174-a86d-eb96870073ad)
 * Agora é só enviar os dados (no meu caso, utilizei só as as primeiras 7 milhões de linha do arquivo) para o bucket
 
-# Configurando e Implementando o AWS Kinesis
+# Configurando e Implementando o AWS Kinesis Data Stream
+# Criando Aplicação Python Que Simula Um Site
+* Boto3 (sdk aws)
+* s3 (bucket)
+* kinesys boto3
 
 
   
