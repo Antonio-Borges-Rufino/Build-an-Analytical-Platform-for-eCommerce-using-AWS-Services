@@ -64,8 +64,16 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/b1582093-8be0-4493-af8e-34ad8a267929)
 * Abaixo está o código modificado para poder transformar cada registro em um vetor. A função decode('utf-8') serve para transformar o tipo byte em string e a função split('\r\n') serve para poder quebrar de maneira correta cada registro
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/27aa5113-8498-403c-acdc-b551bd0de258)
-* Agora vamos criar a função de inserção para o kimnesis
-* 
+* Agora vamos criar a função de inserção para o kimnesis englobando os recuperados do s3
+* Primeiro vamos importar as bibliotecas necessárias, entre elas a biblioteca csv e json. A biblioteca csv vai ler os dados em forma de dicionário através do método DictReader() e a biblioteca json vai devolver os dados em json para o kinesis
+* Abaixo está o código e o response, esse código é do projectpro, mas na documentação obtemos quase os mesmos códigos, entretanto, aqui eles fazem tratamento dos dados csv
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/20cf0000-14a9-473f-a240-7233b16d31a8)
+* Primeiro usamos a biblioteca boto3, nela, podemos acessar os clientes s3 e kinesis. A partir disso, recuperamos os dados do S3 a partir do comando "response_nov = client_s3.get_object(Bucket={},Key={})". Bucket é o nome do bucket em que está os dados e Key é o nome do arquivo. O método get_object recupera qualquer tipo de arquivo do bucket.
+* O código "response_nov = response_nov['Body'].read().decode("utf-8").split('\r\n')" realiza a leitura do arquivo, a resposta da requisção chega em formato JSON, e no campo Body vem os dados em forma de byte, para convertelos para string usamos decode('utf-8'). o método read() é usado para ler os dados em binário e split('\r\n') é usado para quebrar a string unica em vários vetores contendo as informações de uma só linha
+* Depois criamos o for iterativo onde vamos percorrer as linhas e enviar as informações. Como o arquivo possuia cabeçalho usei o método da biblioteca csv no "for x in csv.DictReader(response):"
+* Dentro do looping fazemos a transformação dos dados, aqui é importante entender o que a linha "json_load['txn_timestamp'] = datetime.now().isoformat()" está fazendo, ela salva o horário de envio da informação e a linha "response = client_kinesis.put_record(StreamName='{},Data=json.dumps(json_load, indent=4),PartitionKey=str(json_load['category_id']))" é quem de fato faz a postagem dos dados para o kinesis
+* Podemos ver os dados chegando através do painel de obtenção de dados, como abaixo:
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/6759cbd6-ff9d-48de-a159-52fba19b8651)
 
 
   
