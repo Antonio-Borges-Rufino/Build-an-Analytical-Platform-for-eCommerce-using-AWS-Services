@@ -85,6 +85,14 @@
 * O AWS Glue vai funcionar como registro de schema para o flink, basicamente, é ele quem vai nortear o SQL do Flink a partir do schema que ele puxar dos nossos dados em CSV guardados no S3
 
 # Criação do AWS Glue
+* Para criar um novo banco de dados no AWS Glue, entre no serviço, vá em banco de dados e aperte em criar um novo
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/9b4a5a7c-0722-416b-8daf-bb40927609f5)
+* No nivel gratuito temos bastante espaço para poder utilizar o serviço
+* No painel de criação, coloque o nome do seu banco de dados e a URI da sua pasta S3 onde você quer salvar o banco
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/08c031e4-78d3-418f-b1dc-f748755cb919)
+* Agora vamos adicionar a tabela usando o crawler, isso significa que o glue vai analisar o arquivo e vai definir um schema pra ele
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/f611c55a-9114-40e0-a3b0-d54bfecde347)
+* 
 
 # Criação do Canal De Saída de Stream 2
 
