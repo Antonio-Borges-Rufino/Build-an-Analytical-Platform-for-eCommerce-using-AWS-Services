@@ -103,8 +103,8 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/508d4af7-1526-47d4-a406-53c4c899df1d)
 * Pronto, nosso banco de dados AWS Glue foi criado
 
-
 # Criação do Canal De Saída de Stream 2
+* Apenas siga os passos da seção Configurando e Implementando o AWS Kinesis Data Stream
 
 # Criação e Integração de Aplicação com Apache Flink
 
