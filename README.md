@@ -92,7 +92,17 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/08c031e4-78d3-418f-b1dc-f748755cb919)
 * Agora vamos adicionar a tabela usando o crawler, isso significa que o glue vai analisar o arquivo e vai definir um schema pra ele
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/f611c55a-9114-40e0-a3b0-d54bfecde347)
-* 
+* As configurações são pessoais, a única que deve ser realmente vista é a onfiguração que aponta para onde estão os dados. O que montamos nessa config é o crawler, então a missão dele é pesquisar dentro do bucket S3 em busca dos dados. Portanto, coloque apenas o caminho do bucket, não do dado em si
+* Depois de construido, vá em tables e acesse a sua tabela AWS Glue
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/339f0fc7-468a-4b91-9e45-2650940f4736)
+* Dentro da tabela, acesse os dados através do Athena
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/5434eeff-8ccf-4c47-b9e0-e0442718b3ac)
+* Dentro do Athen, aperte em configurações e gerenciar, para indicar um local onde as consultas vão ficar salval. Vou salvar na mesma pasta do bucket S3 que estou usando em todo o projeto
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/5c1b812b-587c-4274-86d1-0b9fa6ce1ad9)
+* Agora podemos executar a query padrão e ver os resultados
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/508d4af7-1526-47d4-a406-53c4c899df1d)
+* Pronto, nosso banco de dados AWS Glue foi criado
+
 
 # Criação do Canal De Saída de Stream 2
 
