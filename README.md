@@ -76,6 +76,20 @@
 * Podemos ver os dados chegando através do painel de obtenção de dados, como abaixo:
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/6759cbd6-ff9d-48de-a159-52fba19b8651)
 
+# Próximo Passo
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/26890c1b-150f-4e35-a98d-deb3ed69269f)
+* Os próximos passos estão relacionados a construção do processamento dos dados em streaming
+* Para isso, vamos criar um banco de dados no AWS Glue utilizando o arquivo que usamos para simular os dados em stream
+* Depois, vamos construir mais um canal de stream no kinesis para poder empurrar os dados do flink para ele
+* Por fim, vamos construir um caderno flink que vai ler os dados do stream 1 e empurrar os dados para o stream 2
+* O AWS Glue vai funcionar como registro de schema para o flink, basicamente, é ele quem vai nortear o SQL do Flink a partir do schema que ele puxar dos nossos dados em CSV guardados no S3
+
+# Criação do AWS Glue
+
+# Criação do Canal De Saída de Stream 2
+
+# Criação e Integração de Aplicação com Apache Flink
+
 
   
   
