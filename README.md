@@ -107,6 +107,7 @@
 * Apenas siga os passos da seção Configurando e Implementando o AWS Kinesis Data Stream
 
 # Criação e Integração de Aplicação com Apache Flink
+* Criar Stream Aplication no Kinesis -> Ler os dados Stream com a Estrutura da tabela do Glue e passar pro outro stream-> Salvar como Aplicação -> Fazer o Deploy da Aplicação -> Executar a aplicação
 
 
   
