@@ -124,8 +124,44 @@
 * Crie um novo notebook, ele deve ter essa cara
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/b2b46c98-6044-4294-a21e-9f6a2af786fb)
 * É nele onde vamos codar a nossa aplicação
-* aaaa
-* aaaa
+* Para acessar os dados usando o flink, precisamos construir uma tabela que será salva no AWS Glue, podemos construir diversos tipos de comandos SQL e usar em stream nessas tabelas, que possuem taxa de atualização em real time. Primeiro, vamos construir a tabela que vai ler os dados.
+* ```
+  %flink.ssql
+  /*Primeiro, drop um schema caso ele exista*/
+  DROP TABLE IF EXISTS kinesis_pipeline_table_1;
+  /*Aqui, vou usar o schema dos dados que chegam para a aplicação no formato json*/
+  CREATE TABLE kinesis_pipeline_table_1 (
+    event_time VARCHAR(30), 
+    event_type VARCHAR(30), 
+    product_id BIGINT, 
+    category_id BIGINT, 
+    category_code VARCHAR(30), 
+    brand VARCHAR(30), 
+    price DOUBLE, 
+    user_id BIGINT, 
+    user_session VARCHAR(30), 
+    txn_timestamp VARCHAR(30)
+    )
+    PARTITIONED BY (category_id)
+    WITH (
+        'connector' = 'kinesis',
+        'stream' = '{kinesis_stream}',
+        'aws.region' = 'us-east-2',
+        'format' = 'json'
+        );
+  ```
+* O comando '%flink.ssql' é fundamental para que o zepelin identifique que é um comando fliker, se não colocar os comandos SQL não funciona
+* Criamos a tabela e inserimos o SCHEMA como um SGBD normal, inclusive, utilizando os mesmos comandos
+* O comando PARTITIONED BY (category_id) é uma boa prática do flink
+* O comando WITH indica os conectores, nesse caso, conector kinesis, em stream coloquei o meu fluxo de dados de entrada, o formato de leitura e a região da minha conta da AWS
+* Agora vou criar mais uma célula e colocar um comando simples para poder ler o banco de dados
+* ```
+  %flink.ssql
+  SELECT * FROM kinesis_pipeline_table_1;
+  ```
+* Vamos ver lá no AWS Glue se o banco foi criado
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/0bd244c4-5124-4de7-bf1e-6a89add3f392)
+* Pronto, o banco foi criado da maneira correta no Glue
 * Agora vamos ver se o flink está lendo corretamente o stream do kinesis. Execute a aplicação do Cloud9 para simular acessos no site e depois execute o comando de select
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/4c9c055b-7b99-4e28-abeb-40811a04863d)
 * No meu caso, funcionou, agora vamos para a segunda parte, que é construir o input para o stream 2
