@@ -108,6 +108,27 @@
 
 # Criação e Integração de Aplicação com Apache Flink
 * Criar Stream Aplication no Kinesis -> Ler os dados Stream com a Estrutura da tabela do Glue e passar pro outro stream-> Salvar como Aplicação -> Fazer o Deploy da Aplicação -> Executar a aplicação
+* Primeiro, vamos no fluxo de dados do kinesis e clique e "Apache Flink Gerenciado"
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/a3bb8f27-029d-492f-be5d-474eb7691630)
+* Depois, selecione studio notebook
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/48fbbb69-a63e-4911-9136-604eb560b020)
+* Selecione criação personalizada, coloque o nome e aperte em avançar
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/04948fc0-3173-4aa9-80d9-0474078cb8e4)
+* Na seção de permissões, deixe a permissão padrão e em baixo coloque o banco de dados AWS Glue que criamos anteriormente
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/ccaa39c0-1be1-4e29-9218-5463b6bc2611)
+* Em fontes incluidas, na fonte destino, coloque o primeiro fluxo kinesis que criei e na fonte de destino, coloque o segundo fluxo kinesis
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/ac3d6892-076e-4bcd-8523-4bd409aa94e9)
+* Na próxima página, deixe tudo como padrão e coloque o bucket s3 que criamos anteriormente como destino de configurações
+* Agora podemos acessar nosso caderno zepelin e acompanhar o stream de dados em tempo real por lá, aperte em executar e abra o zepelin
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/4f902b5a-d762-4fe3-a098-f36596a26609)
+* Crie um novo notebook, ele deve ter essa cara
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/b2b46c98-6044-4294-a21e-9f6a2af786fb)
+* É nele onde vamos codar a nossa aplicação
+* aaaa
+* aaaa
+* Agora vamos ver se o flink está lendo corretamente o stream do kinesis. Execute a aplicação do Cloud9 para simular acessos no site e depois execute o comando de select
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/4c9c055b-7b99-4e28-abeb-40811a04863d)
+* No meu caso, funcionou, agora vamos para a segunda parte, que é construir o input para o stream 2
 
 
   
