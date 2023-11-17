@@ -251,6 +251,15 @@
 * Para criar o AWS Lambda, podemos começar de 2 formas. Uma é criando o recurso e implementando os códigos depois, e outra é criando os códigos, implementando a biblioteca e zipando tudo, depois só criar o recurso. Bom, vou optar por essa segunda opção
 * O AWS Lambda com python funciona através de um arquivo .zip que deve conter além dos códigos, as bibliotecas e os recursos, pode-se encontrar mais informações na [documentação](https://docs.aws.amazon.com/pt_br/lambda/latest/dg/python-package.html). Vou seguir os passos da documentação
 * A única biblioteca que pretendo usar é a boto3 do AWS SDK
+* Vou criar uma pasta onde vou criar o arquivo python lambda_function.py
+* Dentro da pasta, vou criar uma outra pasta com o nome de package, onde as bibliotecas vão ser instaladas
+* Agora, as instruções abaixo são para a instalação do pacote no windows
+* ```
+  cd desktop
+  cd aws-lambda-code
+  pip install --target .\package boto3 --no-user
+  ```
+* Agora é so criar um arquivo zip e pronto. A codificação irei fazer no próprio lambda
 * a
 
 
