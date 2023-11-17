@@ -164,7 +164,41 @@
 * Pronto, o banco foi criado da maneira correta no Glue
 * Agora vamos ver se o flink está lendo corretamente o stream do kinesis. Execute a aplicação do Cloud9 para simular acessos no site e depois execute o comando de select
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/4c9c055b-7b99-4e28-abeb-40811a04863d)
-* No meu caso, funcionou, agora vamos para a segunda parte, que é construir o input para o stream 2
+* No meu caso, funcionou, agora vamos para a segunda parte, que é construir o input para o segundo fluxo de dados do kinesis
+* Os dados que eu vou repassar para o segundo fluxo de dados é uma contagem de ações por usuário. Para isso, vou testar a seguinte query
+* ```
+  SELECT user_id,event_type, count(event_type) FROM kinesis_pipeline_table_1 GROUP BY user_id,event_type;
+  ```
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/1b8903e0-f485-46e9-9468-add29e622c0f)
+* Ok, está funcionando, agora, vou adicionar uma tabela nova antes da query, essa tabela vai corresponder ao segundo fluxo de dados
+* ```
+  %flink.ssql
+  DROP TABLE IF EXISTS kinesis_pipeline_table_2;
+  /*Aqui, vou usar o schema dos dados que chegam para a aplicação no formato json*/
+  CREATE TABLE kinesis_pipeline_table_2 (
+    user_id BIGINT, 
+    event_type VARCHAR(30), 
+    qtd_event BIGINT
+    )
+    WITH (
+        'connector' = 'kinesis',
+        'stream' = 'data_ecomerce_2',
+        'aws.region' = 'us-east-2',
+        'format' = 'json'
+        );
+  ```
+* Vamos confirmar se a tabela foi criada no AWS Glue
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/c77b97a5-91ea-478f-8e9c-4ffb3f0ec796)
+* Agora, vou inserir no insert into o comando de group by para inserir os dados no segundo fluxo do kinesis
+* Segundo a [documentação](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/window-agg/) precisamos definir janelas de tempo para que possamgos fazer agregamentos em gropuby e envia-los por stream para o kinesis, então vamos fazer uma alteração na tabela 1 e adicionar como datetime a coluna 'txn_timestamp'
+* O flink sql não tem suporte para alteração de colunas, então temos que apagar as colunas diretamente no glue, atera-las e executar o script novamente
+* A nova tabela para o primeiro fluxo de dados foi alterada. Temos 3 diferenças, a primeira é a mudança em do tipo da coluna 'txn_timestamp' e a criação de uma nova coluna WATERMARK como fala a [documentação](https://nightlies.apache.org/flink/flink-docs-master/docs/dev/table/sql/queries/window-agg/) e a terceira mudança é a inserção do parâmetro 'json.timestamp-format.standard' = 'ISO-8601' para que possa ser lido normalmente nossos dados na forma como construimos na seção de aplicação python com AWS Cloud9
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/6875b010-670f-4563-8126-2b2b205c3447)
+* Executo o aplicativo python de simulação e vemos o coportamento da nova tabela
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/c22278cf-2b76-48c8-8244-67d653fe45de)
+* Parece que está ok. Agora vamos criar a aplicação para o segundo fluxo de dados em janelas de 1 minuto
+* 
+
 
 
   
