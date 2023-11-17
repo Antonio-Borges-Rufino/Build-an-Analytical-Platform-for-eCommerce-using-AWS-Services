@@ -238,7 +238,13 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/ba4cc66c-2a9f-42c4-a882-8d2b221f5701)
 * Para confirmar a assinatura, você entra no seu email, copia o url e confirma a assinatura com o URL enviado
 
-
+# Implementando Banco de Dados DynamoDB
+* Vamos agora criar o banco de dados que vai persistir os processamentos do segundo fluxo de dados do kinesis utilizando o AWS Lambda
+* Para isso, vá para o serviço DynamoDB e crie uma nova tabela
+* Agora dé um nome e uma chave primária
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bdb044be-3563-4caf-8945-3166c021b409)
+* No restante, mantenha a configuração padrão mínima
+ 
 # Implementando AWS Lambda 
 
 
