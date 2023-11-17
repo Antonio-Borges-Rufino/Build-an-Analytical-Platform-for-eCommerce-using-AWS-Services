@@ -221,7 +221,9 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/653527cd-2f4b-425f-ac3d-8abe9649ad1b)
 * Depois, gere uma aplicação flink
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/8eb4dc8a-ed82-4332-840b-1e802e745f08)
-* Pronto, aplicação flink criada
+* Pronto, aplicação flink criada, Agora é só executar a aplicação e o pipeline vai funcionar corretamente, sem necessarimanete executar diretamente no zepelin
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/873ca838-50a3-4eb2-a622-d3830d67a7f6)
+
 
 # Implementando AWS Lambda 
 
