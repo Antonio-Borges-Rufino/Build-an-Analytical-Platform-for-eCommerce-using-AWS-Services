@@ -244,6 +244,7 @@
 * Agora dé um nome e uma chave primária
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bdb044be-3563-4caf-8945-3166c021b409)
 * No restante, mantenha a configuração padrão mínima
+* a
  
 # Implementando AWS Lambda 
 
