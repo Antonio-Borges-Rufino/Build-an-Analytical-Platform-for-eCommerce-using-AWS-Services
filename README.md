@@ -224,9 +224,22 @@
 * Pronto, aplicação flink criada, Agora é só executar a aplicação e o pipeline vai funcionar corretamente, sem necessarimanete executar diretamente no zepelin
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/873ca838-50a3-4eb2-a622-d3830d67a7f6)
 
+# Construindo Sistema de Alerta com AWS SNS
+* Em algumas situações, podemos ser atacados por bots ou algo do tipo
+* Para essas situações, vamos construir um sistema de alerta que vai enviar um Email para uma conta cadastrada quando isso acontecer
+* Para isso, vá até o SNS e crie um tópico, os clientes vão consumir esse tópico
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/d7830b0f-5bc2-41a2-9d73-723902ae29da)
+* Crie como padrão
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/d5cef026-41f9-4374-903f-b96b26ac6c46)
+* Deixe todos as config minimas e padrão e crie o tópico
+* Depois de criado, insira um consumidor criando assinatura
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/f2f938f0-bb5d-4e6b-8809-862c00d553a2)
+* Coloque para enviar um email-json e coloque seu email
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/ba4cc66c-2a9f-42c4-a882-8d2b221f5701)
+* Para confirmar a assinatura, você entra no seu email, copia o url e confirma a assinatura com o URL enviado
+
 
 # Implementando AWS Lambda 
-
 
 
 
