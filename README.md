@@ -244,9 +244,11 @@
 * Agora dé um nome e uma chave primária
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bdb044be-3563-4caf-8945-3166c021b409)
 * No restante, mantenha a configuração padrão mínima
-* a
  
 # Implementando AWS Lambda 
+* Por motivos de custo, continuar utilizando essa arquitetura é muito caro para um projeto simples, então vou fazer uma leve modificação aqui. Em vez de processar os dados utilizando o flink (que me custou 4 dolares) vou fazer passar apenas o primeiro fluxo de dados
+* Aqui é importante salientar uma coisa, os fluxos de dados estão funcionando por padrão, então, bastaria implementar no AWS Lambda o gatilho para o fluxo de dados processados, em vez do primeiro fluxo de dados. Nesse caso, só estou mostrando minha expertise, mas não posso me dar o luxo de gastar muito com isso
+* Para criar o AWS Lambda, você entra no recurso
 
 
 
