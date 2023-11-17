@@ -248,7 +248,10 @@
 # Implementando AWS Lambda 
 * Por motivos de custo, continuar utilizando essa arquitetura é muito caro para um projeto simples, então vou fazer uma leve modificação aqui. Em vez de processar os dados utilizando o flink (que me custou 4 dolares) vou fazer passar apenas o primeiro fluxo de dados
 * Aqui é importante salientar uma coisa, os fluxos de dados estão funcionando por padrão, então, bastaria implementar no AWS Lambda o gatilho para o fluxo de dados processados, em vez do primeiro fluxo de dados. Nesse caso, só estou mostrando minha expertise, mas não posso me dar o luxo de gastar muito com isso
-* Para criar o AWS Lambda, você entra no recurso
+* Para criar o AWS Lambda, podemos começar de 2 formas. Uma é criando o recurso e implementando os códigos depois, e outra é criando os códigos, implementando a biblioteca e zipando tudo, depois só criar o recurso. Bom, vou optar por essa segunda opção
+* O AWS Lambda com python funciona através de um arquivo .zip que deve conter além dos códigos, as bibliotecas e os recursos, pode-se encontrar mais informações na [documentação](https://docs.aws.amazon.com/pt_br/lambda/latest/dg/python-package.html). Vou seguir os passos da documentação
+* A única biblioteca que pretendo usar é a boto3 do AWS SDK
+* a
 
 
 
