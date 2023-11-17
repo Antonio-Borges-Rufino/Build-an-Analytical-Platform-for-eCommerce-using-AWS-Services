@@ -221,7 +221,9 @@
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/653527cd-2f4b-425f-ac3d-8abe9649ad1b)
 * Depois, gere uma aplicação flink
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/8eb4dc8a-ed82-4332-840b-1e802e745f08)
-*
+* Pronto, aplicação flink criada
+
+# Implementando AWS Lambda 
 
 
 
