@@ -197,7 +197,23 @@
 * Executo o aplicativo python de simulação e vemos o coportamento da nova tabela
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/c22278cf-2b76-48c8-8244-67d653fe45de)
 * Parece que está ok. Agora vamos criar a aplicação para o segundo fluxo de dados em janelas de 1 minuto
+* Para executar o comando em uma janela de tempo, utilizei a seguinte query
+* ```
+  %flink.ssql
+  SELECT user_id,event_type, count(event_type) as qtd FROM kinesis_pipeline_table_1 GROUP BY TUMBLE(txn_timestamp,INTERVAL '1'  
+  MINUTE),user_id,event_type;
+  ```
+* Após executar com a aplicação de simulação pronta, temos o seguinte resultado
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/3ddd38b6-5ecd-45c8-a7e0-8bed1f1533e3)
+* Ok, agora é so adicionar o INSERT e pronto
+* ```
+  INSERT INTO kinesis_pipeline_table_2 
+  SELECT user_id,event_type, count(event_type) as qtd FROM kinesis_pipeline_table_1 GROUP BY TUMBLE(txn_timestamp,INTERVAL '1'   
+  MINUTE),user_id,event_type;
+  ```
+* Agora, executamos a aplicação e vamos ver se os dados chegam no segundo fluxo de dados do kinesis
 * 
+
 
 
 
