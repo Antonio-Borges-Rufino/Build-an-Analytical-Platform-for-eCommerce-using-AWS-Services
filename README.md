@@ -212,7 +212,16 @@
   MINUTE),user_id,event_type;
   ```
 * Agora, executamos a aplicação e vamos ver se os dados chegam no segundo fluxo de dados do kinesis
-* 
+* Deixei um tempo a aplicação funcionando
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/c008c373-b7c4-41f5-ab1f-adb753b7f20e)
+* E os dados estão chegando para o segundo fluxo de dados
+* Estou enviando poucos dados porque tenho medo de cobranças, mas na foto abaixo já da pra visualizar os dados
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bab9a8ad-d8a6-4d9f-9c01-6eaa98c28c00)
+* Agora vamos por todas as células juntas em apenas uma célula e criar a build da aplicação
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/653527cd-2f4b-425f-ac3d-8abe9649ad1b)
+* Depois, gere uma aplicação flink
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/8eb4dc8a-ed82-4332-840b-1e802e745f08)
+*
 
 
 
