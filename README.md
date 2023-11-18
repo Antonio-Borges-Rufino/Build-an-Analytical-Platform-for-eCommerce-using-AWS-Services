@@ -316,8 +316,10 @@
 * O projeto da maneira como está me gerou custos mesmo usando o periodo gratuito da AWS, por isso, nenhum desses sitemas vão ser ligados ao mesmo tempo, e vou me limitar a usar os estados de teste
 * No caso do Lambda, não vou executa-lo, se não pode gerar ainda mais custos, a partir de agora todas as seções vão ser feitas de maneira independente
 
-# Próximos passos
-
+# Próximos passos e passos faltantes
+* Agora vamos realizar a ultima parte que é fazer um ETL básico nas tabelas glue que estão sendo modificadas pelo stream flink
+* Como apaguei os processos de stream porque estavam me gerando custos adicionais, vou utilizar a tabela glue estática que criamos anteriormente
+* Acabei não construindo a função de enviar mensagens, mas isso pode ser implementado com o boto3 dentro da função lambda. Como isso deve ocorrer: O processamento que lmabda deve ler é o processamento do flink, que retorna para o segundo fluxo de dados apenas um JSON normal com 'id_usuario','func','qtd'. A grande sacada é que o flink envia essas informações em lotes, então vamos ler os dados em lote, lendo os dados em lote podemos verificar a quantidade desses dados, por exemplo, se o lote do flink tiver sido programado para 1 minuto e apenas um usuário está com mais de 1000 em qualquer 'qtd' de 'func' então enviariamos um email de alerta de ataque através do boto3 SDK 
   
   
   
