@@ -260,6 +260,8 @@
   pip install --target .\package boto3 --no-user
   ```
 * Agora é so criar um arquivo zip e pronto. A codificação irei fazer no próprio lambda
+* Vá para o lambda e crie uma nova função do zero. Deve ficar igual a de baixo
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/922e434e-b18b-46e7-8c32-3ee1c85d03ae)
 * a
 
 
