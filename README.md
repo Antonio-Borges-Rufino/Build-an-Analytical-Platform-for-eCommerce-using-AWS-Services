@@ -259,11 +259,30 @@
   cd aws-lambda-code
   pip install --target .\package boto3 --no-user
   ```
-* Agora é so criar um arquivo zip e pronto. A codificação irei fazer no próprio lambda
+* Crie um zip dos arquivos de pacote e delete a pasta packages e crie um zip dos arquivos junto com a função lambda
 * Vá para o lambda e crie uma nova função do zero. Deve ficar igual a de baixo
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/922e434e-b18b-46e7-8c32-3ee1c85d03ae)
-* a
-
+* Para que tudo funcione da maneira correta, vá configurações -> permissões -> nome da função e clique na permissão que ta lá. Habilite a permissão de de administrador
+* Agora, que você tem as permissões, adicione um gatilho do kinesis. No meu caso, o gatilho vai ser o fluxo de dados 1. Mas também pode acionar o gatilho de fluxo de dados 2
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/7209fd4a-008c-47eb-a8d6-fd0ad8460f50)
+* Podemos testar para ver se está funcionando,para isso, escreva o seguinte código no lambda_function.py
+* ```
+  from __future__ import print_function
+  from datetime import datetime
+  import base64
+  import json
+  import boto3
+  import os
+  def lambda_handler(event, context):
+    for record in event['Records']:
+       #Kinesis data is base64 encoded so decode here
+       payload=base64.b64decode(record["kinesis"]["data"])
+       return 'Successfully processed {} records.'.format(str(payload))
+  ```
+* Faça o processo de zip e envie para o lambda. Após enviar, Vá na aba testar e execute o JSON Normal. Eu mudei a as informações do campo data do JSON para um encoded 64 diferente
+* É importante ressaltar que as informações chegam do kinesis em formato de base64, então você tem que fazer o decode da informação.
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bf97c484-165b-41d8-9f93-1c4dccdb080e)
+* Podemos ver a string de retorno que criamos
 
 
   
