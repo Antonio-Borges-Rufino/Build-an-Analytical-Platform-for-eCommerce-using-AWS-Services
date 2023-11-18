@@ -283,7 +283,40 @@
 * É importante ressaltar que as informações chegam do kinesis em formato de base64, então você tem que fazer o decode da informação.
 * ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/bf97c484-165b-41d8-9f93-1c4dccdb080e)
 * Podemos ver a string de retorno que criamos
+* Agora, vamos escrever o código que vai realizar a inserção no DynamoDB. Abaixo explicaremos melhor:
+* ```
+  from __future__ import print_function
+  from boto3.dynamodb.types import TypeSerializer
+  import base64
+  import json
+  import boto3
+  import os
+  dynamodb = boto3.client('dynamodb', region_name='us-east-2')
+  def convert_to_dynamodb(value):
+    serializer = TypeSerializer()
+    return serializer.serialize(value)
+  def lambda_handler(event, context):
+    for record in event['Records']:
+       payload=base64.b64decode(record["kinesis"]["data"])
+       json_document = json.loads(payload.decode('utf-8'))
+       input_user_id = str(json_document['user_id'])
+       json_document['id_usuario'] = 'userid{}'.format(input_user_id)
+       json_document_dynamodb = {key: convert_to_dynamodb(value) for key, value in json_document.items()}
+       dynamodb.put_item(TableName='{table_name}',Item=json_document_dynamodb)
+       resposta_val = 'O Documento {} Foi Inserido com A Chave {}'.format(json_document,input_user_id)
+       return resposta_val
 
+  ```
+* Primeiro, nós chamamos o cliente do dynamodb através do boto3 em 'dynamodb = boto3.client('dynamodb', region_name='us-east-2')', depois construimos a função de serelização para poder inserir os dados no dynamodb, por padrão, o JSON normal não poder ser diretamente inserido na tabela então vamos transformar com a função 'def convert_to_dynamodb(value):', depois, entramos de fato na função lambda. Utilizamos o código para visualização do kinesis da documentação. Fizemos a decodificação dos dados, que já foi explicado anteriormente, adicionamos um campo 'id_usuario' que foi configurado como "chave_primaria" da tabela do dynamodb, depois faço a conversão de todos os dados para o tipo suportado utilizando a função convert_to_dynamodb e depois realizo o put na tabela do dynamodb
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/c420608a-589c-4729-9cb2-889e862c4591)
+* Em cima está o resultado do teste e agora vou mostrar a inserção no DynamoDB
+* ![image](https://github.com/Antonio-Borges-Rufino/Build-an-Analytical-Platform-for-eCommerce-using-AWS-Services/assets/86124443/aa0a297a-1f45-4f75-ab25-c04400748e34)
+
+# OBS SOBRE OS CUSTOS E SOBRE O PROJETO
+* O projeto da maneira como está me gerou custos mesmo usando o periodo gratuito da AWS, por isso, nenhum desses sitemas vão ser ligados ao mesmo tempo, e vou me limitar a usar os estados de teste
+* No caso do Lambda, não vou executa-lo, se não pode gerar ainda mais custos, a partir de agora todas as seções vão ser feitas de maneira independente
+
+# Próximos passos
 
   
   
